@@ -24,10 +24,10 @@ public class Instagram {
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathInputSearch)));
 	}
 
-	public static void logout() {
+	public static void logout(long timeToAwait) {
 		Driver.access.get("https://www.instagram.com/");
 		String xpathInputSearch = "//span[contains(text(), 'Pesquisar')]";
-		new WebDriverWait(Driver.access, 15)
+		new WebDriverWait(Driver.access, timeToAwait)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathInputSearch)));
 
 		Driver.access.manage().deleteCookieNamed("sessionid");

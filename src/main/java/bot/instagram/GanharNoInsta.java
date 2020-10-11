@@ -15,8 +15,8 @@ import models.Account;
 
 public class GanharNoInsta {
 
-	public final static long INTERVAL_FOLLOW = 300000;
-	public final static int QUANTITY_FOLLOWS_IN_INTERVAL_TIME = 1;
+	public final static long INTERVAL_FOLLOW = 1800000;
+	public final static int QUANTITY_FOLLOWS_IN_INTERVAL_TIME = 5;
 	public static List<Account> accounts = new ArrayList<Account>();
 
 	static void login() {
@@ -37,7 +37,6 @@ public class GanharNoInsta {
 
 	static void startFollow() {
 		while (true) {
-			System.out.println("START_FOLLOW_INIT");
 			accounts.forEach(account -> {
 				if (account.getLastDateFollowFlow() == null) {
 					accountFollowFlow(account);
@@ -82,6 +81,15 @@ public class GanharNoInsta {
 			buttonSeeProfile.click();
 
 			while (Driver.access.getWindowHandles().size() > 1) {
+				if (Driver.access.getWindowHandles().size() >= 3) {
+					System.out.print("O perfil da " + account.getNickName() + " não esta podendo seguir no momento.");
+					account.setCanFollowNow(false);
+					account.setLastDateFollowFlow(new Date(new Date().getTime() + INTERVAL_FOLLOW));
+				}
+			}
+			
+			if (!account.getCanFollowNow()) {
+				break;
 			}
 
 			WebElement buttonConfirmationAction = Driver.access.findElement(By.id("btn-confirmar"));
@@ -96,7 +104,7 @@ public class GanharNoInsta {
 		account.setCanFollowNow(false);
 
 		buttonStop.click();
-		Instagram.logout();
+		Instagram.logout(10);
 		System.out.println("Deslogando a " + account.getNickName());
 	}
 
