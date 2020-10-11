@@ -15,8 +15,8 @@ import models.Account;
 
 public class GanharNoInsta {
 
-	public final static long INTERVAL_FOLLOW = 3600000;
-	public final static int QUANTITY_FOLLOWS_IN_INTERVAL_TIME = 10;
+	public final static long INTERVAL_FOLLOW = 300000;
+	public final static int QUANTITY_FOLLOWS_IN_INTERVAL_TIME = 1;
 	public static List<Account> accounts = new ArrayList<Account>();
 
 	static void login() {
@@ -61,11 +61,6 @@ public class GanharNoInsta {
 
 		toTabRealizarAcoes();
 
-		new WebDriverWait(Driver.access, 9999999)
-				.until(ExpectedConditions.visibilityOfElementLocated(By.id("btn_iniciar")));
-		new WebDriverWait(Driver.access, 9999999)
-				.until(ExpectedConditions.visibilityOfElementLocated(By.id("contaig")));
-
 		Select optionsAccounts = new Select(Driver.access.findElement(By.id("contaig")));
 
 		WebElement optionToSelect = optionsAccounts.getOptions().stream()
@@ -80,11 +75,13 @@ public class GanharNoInsta {
 		for (int i = 1; i <= QUANTITY_FOLLOWS_IN_INTERVAL_TIME; i++) {
 			new WebDriverWait(Driver.access, 9999999)
 					.until(ExpectedConditions.visibilityOfElementLocated(By.id("btn-acessar")));
+
+			sleep(200);
+
 			WebElement buttonSeeProfile = Driver.access.findElement(By.id("btn-acessar"));
 			buttonSeeProfile.click();
 
 			while (Driver.access.getWindowHandles().size() > 1) {
-				sleep(300);
 			}
 
 			WebElement buttonConfirmationAction = Driver.access.findElement(By.id("btn-confirmar"));
