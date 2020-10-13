@@ -15,14 +15,18 @@ import models.Account;
 
 public class GanharNoInsta {
 
-	public final static long INTERVAL_FOLLOW = 1800000;
-	public final static int QUANTITY_FOLLOWS_IN_INTERVAL_TIME = 5;
+	public static long INTERVAL_FOLLOW = 1800000;
+	public static int QUANTITY_FOLLOWS_IN_INTERVAL_TIME = 5;
+	public static long INTERVAL_NONE_FOLLOW_BLOCK_TIME = 4680000;
+	public static String EMAIL = "";
+	public static String PASSWORD = "";
+
 	public static List<Account> accounts = new ArrayList<Account>();
 
 	static void login() {
 		new WebDriverWait(Driver.access, 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
-		Driver.access.findElement(By.name("email")).sendKeys("gabrielachiodi666@gmail.com");
-		Driver.access.findElement(By.name("senha")).sendKeys("Biladi123@");
+		Driver.access.findElement(By.name("email")).sendKeys(EMAIL);
+		Driver.access.findElement(By.name("senha")).sendKeys(PASSWORD);
 
 		Driver.access.findElement(By.xpath("//button[contains(text(), 'Efetuar Login')]")).click();
 	}
@@ -101,7 +105,8 @@ public class GanharNoInsta {
 		if (isBlocked) {
 			System.out.println("O perfil da " + account.getNickName() + " não esta podendo seguir no momento.");
 			account.setCanFollowNow(false);
-			account.setLastDateFollowFlow(new Date(new Date().getTime() + 4680000));
+			account.setLastDateFollowFlow(
+					new Date((new Date().getTime() - INTERVAL_FOLLOW) + INTERVAL_NONE_FOLLOW_BLOCK_TIME));
 		} else {
 			account.setLastDateFollowFlow(new Date());
 			account.setCanFollowNow(false);
