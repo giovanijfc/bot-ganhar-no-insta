@@ -1,0 +1,18 @@
+[{
+  "nickName": "lullybass",
+  "password": "conta#02",
+  "email": "lullybass"
+},
+{
+  "nickName": "macielaraa",
+  "password": "conta#06",
+  "email": "macielaraa"
+},{
+  "nickName": "rgeniori",
+  "password": "conta#09",
+  "email": "rgeniori"
+},{
+  "nickName": "brunaweltzs",
+  "password": "conta#10",
+  "email": "brunaweltzs"
+}]

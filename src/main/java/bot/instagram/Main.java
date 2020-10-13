@@ -1,6 +1,7 @@
 package bot.instagram;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import utils.Populate;
 
@@ -21,6 +22,8 @@ public class Main {
 			}
 
 			Driver.access.get("https://www.ganharnoinsta.com/painel/");
+
+			Driver.access.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
 			GanharNoInsta.login();
 			GanharNoInsta.startFollow();

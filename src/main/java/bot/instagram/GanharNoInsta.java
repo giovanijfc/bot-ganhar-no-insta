@@ -50,7 +50,6 @@ public class GanharNoInsta {
 			});
 
 			sleep(5000);
-			System.out.println("START_FOLLOW_FINISH");
 		}
 	}
 
@@ -102,7 +101,7 @@ public class GanharNoInsta {
 		if (isBlocked) {
 			System.out.println("O perfil da " + account.getNickName() + " não esta podendo seguir no momento.");
 			account.setCanFollowNow(false);
-			account.setLastDateFollowFlow(new Date(new Date().getTime() + INTERVAL_FOLLOW));
+			account.setLastDateFollowFlow(new Date(new Date().getTime() + 4680000));
 		} else {
 			account.setLastDateFollowFlow(new Date());
 			account.setCanFollowNow(false);
