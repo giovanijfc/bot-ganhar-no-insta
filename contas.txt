@@ -19,4 +19,24 @@
   "nickName": "maferzis",
   "password": "conta#08",
   "email": "maferzis"
+},{
+  "nickName": "mariaferreia6",
+  "password": "Mafiaazul123",
+  "email": "mariaferreia6"
+},{
+  "nickName": "mp_silvao1",
+  "password": "Mafiaazul123",
+  "email": "mp_silvao1"
+},{
+  "nickName": "js_moreira1",
+  "password": "Mafiaazul123",
+  "email": "js_moreira1"
+},{
+  "nickName": "pl_ferreira1",
+  "password": "Mafiaazul123",
+  "email": "pl_ferreira1"
+},{
+  "nickName": "jp_silvao1",
+  "password": "Mafiaazul123",
+  "email": "jp_silvao1"
 }]

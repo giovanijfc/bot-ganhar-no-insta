@@ -43,7 +43,7 @@ const start = async () => {
     if (buttonMessage) {
       setTimeout(() => {
         window.close();
-      }, [1000]);
+      }, [4000]);
 
       return;
     }
