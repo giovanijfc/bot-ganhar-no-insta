@@ -14,13 +14,21 @@ public class Main {
 	private static final int PASSWORD_POSITION = 4;
 
 	public static void main(String[] args) {
-		GanharNoInsta.INTERVAL_FOLLOW = Integer.parseInt(args[POSITION_INTERVAL_TIME]);
-		GanharNoInsta.QUANTITY_FOLLOWS_IN_INTERVAL_TIME = Integer.parseInt(args[POSITION_QUANTITY_FOLLOWS_IN_INTERVAL])
-				* 1000;
+
+		GanharNoInsta.INTERVAL_FOLLOW = Integer.parseInt(args[POSITION_INTERVAL_TIME]) * 1000;
+		GanharNoInsta.QUANTITY_FOLLOWS_IN_INTERVAL_TIME = Integer.parseInt(args[POSITION_QUANTITY_FOLLOWS_IN_INTERVAL]);
 		GanharNoInsta.INTERVAL_NONE_FOLLOW_BLOCK_TIME = Integer.parseInt(args[POSITION_INTERVAL_FOLLOW_BLOCK_TIME])
 				* 1000;
 		GanharNoInsta.EMAIL = args[EMAIL_POSITION];
 		GanharNoInsta.PASSWORD = args[PASSWORD_POSITION];
+
+		System.out.println("Quantidade de seguidores em cada intervalo de tempo: "
+				+ GanharNoInsta.QUANTITY_FOLLOWS_IN_INTERVAL_TIME);
+		System.out.println("Intervalo de tempo de espera após seguir: " + GanharNoInsta.INTERVAL_FOLLOW / 1000 + " segundos");
+		System.out.println("Intervalo de tempo de espera após tomar block de seguir: "
+				+ GanharNoInsta.INTERVAL_NONE_FOLLOW_BLOCK_TIME / 1000 + " segundos");
+		System.out.println("Email: " + GanharNoInsta.EMAIL);
+		System.out.println("Senha: " + GanharNoInsta.PASSWORD);
 
 		Populate.jsonToArrayOfAccounts("C:/bots/instagram/contas.txt");
 

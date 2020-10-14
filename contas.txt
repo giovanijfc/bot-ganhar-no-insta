@@ -15,4 +15,8 @@
   "nickName": "brunaweltzs",
   "password": "conta#10",
   "email": "brunaweltzs"
+},{
+  "nickName": "maferzis",
+  "password": "conta#08",
+  "email": "maferzis"
 }]
