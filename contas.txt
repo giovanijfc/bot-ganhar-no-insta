@@ -39,4 +39,24 @@
   "nickName": "jp_silvao1",
   "password": "Mafiaazul123",
   "email": "jp_silvao1"
+},{
+  "nickName": "carl_ferr18",
+  "password": "Mafiaazul123",
+  "email": "carl_ferr18"
+},{
+  "nickName": "mari_lay1",
+  "password": "Mafiaazul123",
+  "email": "mari_lay1"
+},{
+  "nickName": "abigsou",
+  "password": "Mafiaazul123",
+  "email": "abigsou"
+},{
+  "nickName": "sop_mich18",
+  "password": "Mafiaazul123",
+  "email": "sop_mich18"
+},{
+  "nickName": "angelsil15",
+  "password": "Mafiaazul123",
+  "email": "angelsil15"
 }]
