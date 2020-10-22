@@ -1,6 +1,5 @@
 package bot.instagram;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import utils.Populate;
@@ -49,8 +48,10 @@ public class Main {
 
 			GanharNoInsta.login();
 			GanharNoInsta.startFollow();
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			Driver.access.close();
+			Driver.access.quit();
+			main(args);
 		}
 	}
 }

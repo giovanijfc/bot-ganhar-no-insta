@@ -20,7 +20,7 @@ public class GanharNoInsta {
 	public static long INTERVAL_NONE_FOLLOW_BLOCK_TIME = 4680000;
 	public static String EMAIL = "";
 	public static String PASSWORD = "";
-
+	public static Integer currentQuantityFollows = 0;
 	public static List<Account> accounts = new ArrayList<Account>();
 
 	static void login() {
@@ -96,8 +96,10 @@ public class GanharNoInsta {
 
 			WebElement buttonConfirmationAction = Driver.access.findElement(By.id("btn-confirmar"));
 			buttonConfirmationAction.click();
-
-			System.out.println("Seguiu " + i + " vez " + account.getNickName());
+				
+			++currentQuantityFollows;
+						
+			System.out.println("Seguiu " + currentQuantityFollows + " vez" + (currentQuantityFollows > 1 ? "es." : "."));
 		}
 
 		WebElement buttonStop = Driver.access.findElement(By.id("btn_pausar"));
