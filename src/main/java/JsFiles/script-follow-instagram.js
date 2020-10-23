@@ -39,11 +39,24 @@ const start = async () => {
   intervalID = setInterval(() => {
     const buttonFollow = findByButtonFollow();
     const buttonMessage = findByButtonMessage();
+    const buttonLike =
+      document.querySelector('svg[aria-label="Like"]') ||
+      document.querySelector('svg[aria-label="Curtir"]');
+
+    if (buttonLike) {
+      buttonLike.parentNode.click();
+
+      setTimeout(() => {
+        window.close();
+      }, [10000]);
+
+      return;
+    }
 
     if (buttonMessage) {
       setTimeout(() => {
         window.close();
-      }, [4000]);
+      }, [10000]);
 
       return;
     }
@@ -53,13 +66,13 @@ const start = async () => {
 
       setTimeout(() => {
         window.close();
-      }, [1000]);
+      }, [10000]);
 
       return;
     }
 
     buttonFollow.click();
-  }, [1000]);
+  }, [10000]);
 };
 
 start();
