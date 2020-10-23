@@ -1,5 +1,7 @@
 package bot.instagram;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import utils.Populate;
@@ -13,7 +15,6 @@ public class Main {
 	private static final int PASSWORD_POSITION = 4;
 
 	public static void main(String[] args) {
-
 		GanharNoInsta.INTERVAL_FOLLOW = Integer.parseInt(args[POSITION_INTERVAL_TIME]) * 1000;
 		GanharNoInsta.QUANTITY_FOLLOWS_IN_INTERVAL_TIME = Integer.parseInt(args[POSITION_QUANTITY_FOLLOWS_IN_INTERVAL]);
 		GanharNoInsta.INTERVAL_NONE_FOLLOW_BLOCK_TIME = Integer.parseInt(args[POSITION_INTERVAL_FOLLOW_BLOCK_TIME])
@@ -23,7 +24,8 @@ public class Main {
 
 		System.out.println("Quantidade de seguidores em cada intervalo de tempo: "
 				+ GanharNoInsta.QUANTITY_FOLLOWS_IN_INTERVAL_TIME);
-		System.out.println("Intervalo de tempo de espera após seguir: " + GanharNoInsta.INTERVAL_FOLLOW / 1000 + " segundos");
+		System.out.println(
+				"Intervalo de tempo de espera após seguir: " + GanharNoInsta.INTERVAL_FOLLOW / 1000 + " segundos");
 		System.out.println("Intervalo de tempo de espera após tomar block de seguir: "
 				+ GanharNoInsta.INTERVAL_NONE_FOLLOW_BLOCK_TIME / 1000 + " segundos");
 		System.out.println("Email: " + GanharNoInsta.EMAIL);
@@ -32,9 +34,11 @@ public class Main {
 		Populate.jsonToArrayOfAccounts("C:/bots/instagram/contas.txt");
 
 		try {
-			Runtime.getRuntime()
-					.exec("chrome.exe --remote-debugging-port=9222 --user-data-dir=\"C:\\bots\\instagram\"");
-			new Driver("9222");
+			if (Driver.access == null) {
+				Runtime.getRuntime()
+						.exec("chrome.exe --remote-debugging-port=9222 --user-data-dir=\"C:\\bots\\instagram\"");
+				new Driver("9222");
+			}
 
 			try {
 				Instagram.logout(3);
@@ -46,11 +50,24 @@ public class Main {
 
 			Driver.access.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
-			GanharNoInsta.login();
+			try {
+				GanharNoInsta.login(3);
+			} catch (Exception e) {
+				System.out.print("Não tinha conta logada");
+			}
+
 			GanharNoInsta.startFollow();
+
 		} catch (Exception e) {
-			Driver.access.close();
-			Driver.access.quit();
+			if (Driver.access.getWindowHandles().size() > 1) {
+				List<String> windows = new ArrayList<>(Driver.access.getWindowHandles());
+
+				for (int position = 1; position < windows.size(); ++position) {
+					Driver.access.switchTo().window(windows.get(position));
+					Driver.access.close();
+				}
+			}
+
 			main(args);
 		}
 	}

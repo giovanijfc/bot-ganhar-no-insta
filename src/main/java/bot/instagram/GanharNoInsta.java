@@ -23,8 +23,9 @@ public class GanharNoInsta {
 	public static Integer currentQuantityFollows = 0;
 	public static List<Account> accounts = new ArrayList<Account>();
 
-	static void login() {
-		new WebDriverWait(Driver.access, 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
+	static void login(Integer timeToAwait) {
+		new WebDriverWait(Driver.access, timeToAwait)
+				.until(ExpectedConditions.visibilityOfElementLocated(By.name("email")));
 		Driver.access.findElement(By.name("email")).sendKeys(EMAIL);
 		Driver.access.findElement(By.name("senha")).sendKeys(PASSWORD);
 
@@ -77,7 +78,7 @@ public class GanharNoInsta {
 		sleep(1000);
 
 		for (int i = 1; i <= QUANTITY_FOLLOWS_IN_INTERVAL_TIME; i++) {
-			new WebDriverWait(Driver.access, 9999999)
+			new WebDriverWait(Driver.access, 600000)
 					.until(ExpectedConditions.visibilityOfElementLocated(By.id("btn-acessar")));
 			sleep(200);
 
@@ -96,10 +97,11 @@ public class GanharNoInsta {
 
 			WebElement buttonConfirmationAction = Driver.access.findElement(By.id("btn-confirmar"));
 			buttonConfirmationAction.click();
-				
+
 			++currentQuantityFollows;
-						
-			System.out.println("Seguiu " + currentQuantityFollows + " vez" + (currentQuantityFollows > 1 ? "es." : "."));
+
+			System.out
+					.println("Seguiu " + currentQuantityFollows + " vez" + (currentQuantityFollows > 1 ? "es." : "."));
 		}
 
 		WebElement buttonStop = Driver.access.findElement(By.id("btn_pausar"));
