@@ -48,7 +48,7 @@ const start = async () => {
 
       setTimeout(() => {
         window.close();
-      }, [10000]);
+      }, [30000]);
 
       return;
     }
@@ -56,7 +56,7 @@ const start = async () => {
     if (buttonMessage) {
       setTimeout(() => {
         window.close();
-      }, [10000]);
+      }, [30000]);
 
       return;
     }
@@ -66,7 +66,7 @@ const start = async () => {
 
       setTimeout(() => {
         window.close();
-      }, [10000]);
+      }, [30000]);
 
       return;
     }
