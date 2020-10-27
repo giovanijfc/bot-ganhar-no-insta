@@ -1,11 +1,14 @@
 [{
+  "nickName": "julia.rodrigues.16",
+  "password": "123456789l",
+  "email": "Leobross33@gmail.com"
+},{
   "nickName": "lullybass",
   "password": "conta#02",
   "email": "lullybass"
-},
-{
+},{
   "nickName": "macielaraa",
-  "password": "conta#06",
+  "password": "Mafiaazul123",
   "email": "macielaraa"
 },{
   "nickName": "rgeniori",
@@ -19,10 +22,6 @@
   "nickName": "maferzis",
   "password": "conta#08",
   "email": "maferzis"
-},{
-  "nickName": "mariaferreia6",
-  "password": "Mafiaazul123",
-  "email": "mariaferreia6"
 },{
   "nickName": "mp_silvao1",
   "password": "Mafiaazul123",
